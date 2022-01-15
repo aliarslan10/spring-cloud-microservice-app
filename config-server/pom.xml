@@ -16,10 +16,6 @@
     <name>Config Server</name>
     <description>Config Server to Specify Configuration of the Services</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
