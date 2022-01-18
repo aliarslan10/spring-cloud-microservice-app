@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.cassandra.config.CqlSessionFactoryBean;
+import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecification;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
+
+import java.util.Collections;
 
 @Configuration
 @EnableCassandraRepositories(basePackages = {"com.example.aliarslan.accountservice"})
@@ -37,6 +40,7 @@ public class CassandraConfiguration {
         cqlSessionFactoryBean.setLocalDatacenter(localDatacenter);
         cqlSessionFactoryBean.setPort(port);
         cqlSessionFactoryBean.setContactPoints(contactPoint);
+        cqlSessionFactoryBean.setKeyspaceCreations(Collections.singletonList(CreateKeyspaceSpecification.createKeyspace(keySpace).ifNotExists()));
         return cqlSessionFactoryBean;
     }
 }
