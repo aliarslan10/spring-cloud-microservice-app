@@ -13,3 +13,8 @@ spring:
         datacenter: datacenter1
       contact:
         point: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
