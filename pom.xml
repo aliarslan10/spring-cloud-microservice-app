@@ -40,6 +40,7 @@
         <module>config-server</module>
         <module>account-service</module>
         <module>discovery-server</module>
+        <module>order-service</module>
     </modules>
 
     <dependencyManagement>
