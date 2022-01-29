@@ -2,6 +2,7 @@ package com.example.aliarslan.orderservice.service.impl;
 
 import com.example.aliarslan.orderservice.converter.model.OrderRequest;
 import com.example.aliarslan.orderservice.converter.model.OrderResponse;
+import com.example.aliarslan.orderservice.repository.OrderMysqlRepository;
 import com.example.aliarslan.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
+
+    private final OrderMysqlRepository orderMysqlRepository;
 
     @Override
     public OrderResponse save(OrderRequest orderRequest) {
