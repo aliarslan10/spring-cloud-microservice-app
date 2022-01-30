@@ -2,6 +2,7 @@ package com.example.aliarslan.orderservice.service.impl;
 
 import com.example.aliarslan.orderservice.converter.model.OrderRequest;
 import com.example.aliarslan.orderservice.converter.model.OrderResponse;
+import com.example.aliarslan.orderservice.repository.OrderElasticsearchRepository;
 import com.example.aliarslan.orderservice.repository.OrderMysqlRepository;
 import com.example.aliarslan.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderMysqlRepository orderMysqlRepository;
+    private final OrderElasticsearchRepository orderElasticsearchRepository;
 
     @Override
     public OrderResponse save(OrderRequest orderRequest) {
