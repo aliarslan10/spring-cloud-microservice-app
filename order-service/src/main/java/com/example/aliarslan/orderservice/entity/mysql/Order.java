@@ -1,4 +1,4 @@
-package com.example.aliarslan.orderservice.entity;
+package com.example.aliarslan.orderservice.entity.mysql;
 
 import com.example.aliarslan.orderservice.enums.OrderStatus;
 import lombok.Data;
@@ -6,11 +6,11 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
