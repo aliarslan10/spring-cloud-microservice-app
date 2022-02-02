@@ -1,6 +1,6 @@
-package com.example.aliarslan.orderservice.entity.elastichsearch;
+package com.example.aliarslan.orderservice.infra.adapters.jpa.entity;
 
-import com.example.aliarslan.orderservice.enums.OrderStatus;
+import com.example.aliarslan.orderservice.domain.order.model.OrderStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 @Data
 @Document(indexName = "orders")
-public class Order implements Serializable {
+public class OrderElasticsearchEntity implements Serializable {
 
     @Id
     @GeneratedValue(generator = "UUID")

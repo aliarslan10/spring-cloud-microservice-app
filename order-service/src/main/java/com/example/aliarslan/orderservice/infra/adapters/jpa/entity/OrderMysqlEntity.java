@@ -1,6 +1,6 @@
-package com.example.aliarslan.orderservice.entity.mysql;
+package com.example.aliarslan.orderservice.infra.adapters.jpa.entity;
 
-import com.example.aliarslan.orderservice.enums.OrderStatus;
+import com.example.aliarslan.orderservice.domain.order.model.OrderStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "orders")
-public class Order {
+public class OrderMysqlEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")

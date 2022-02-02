@@ -1,8 +1,9 @@
-package com.example.aliarslan.orderservice.controller;
+package com.example.aliarslan.orderservice.infra.adapters.rest;
 
-import com.example.aliarslan.orderservice.converter.model.OrderRequest;
-import com.example.aliarslan.orderservice.converter.model.OrderResponse;
-import com.example.aliarslan.orderservice.service.OrderService;
+import com.example.aliarslan.orderservice.domain.order.OrderFacade;
+import com.example.aliarslan.orderservice.domain.order.model.Order;
+import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
+import com.example.aliarslan.orderservice.infra.adapters.rest.dto.OrderResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,31 +23,32 @@ import java.util.List;
 @RequestMapping("orders")
 public class OrderController {
 
-    private final OrderService orderService;
+    private final OrderFacade orderFacade;
 
     @PostMapping
-    public ResponseEntity<OrderResponse> save(@Valid OrderRequest orderRequest) {
-        return ResponseEntity.ok(orderService.save(orderRequest));
+    public ResponseEntity<OrderResponse> save(@Valid OrderCreate orderRequest) {
+        Order order = orderFacade.save(orderRequest);
+        return ResponseEntity.ok(OrderResponse.fromModel(order));
     }
 
     @GetMapping("/id")
     public ResponseEntity<OrderResponse> get(@PathVariable("id") String orderId) {
-        return ResponseEntity.ok(orderService.get(orderId));
+        return ResponseEntity.ok(orderFacade.get(orderId));
     }
 
     @PutMapping("/id")
-    public ResponseEntity<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderRequest orderRequest) {
-        return ResponseEntity.ok(orderService.update(orderRequest, orderId));
+    public ResponseEntity<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderCreate orderRequest) {
+        return ResponseEntity.ok(orderFacade.update(orderRequest, orderId));
     }
 
     @DeleteMapping
     public void delete(@PathVariable("id") String orderId) {
-        orderService.delete(orderId);
+        orderFacade.delete(orderId);
         ResponseEntity.ok();
     }
 
     @GetMapping
     public ResponseEntity<List<OrderResponse>> getAll() {
-        return ResponseEntity.ok(orderService.getAll());
+        return ResponseEntity.ok(orderFacade.getAll());
     }
 }
