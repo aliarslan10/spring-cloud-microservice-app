@@ -3,15 +3,24 @@ package com.example.aliarslan.orderservice.infra.adapters.jpa;
 import com.example.aliarslan.orderservice.domain.order.OrderRepository;
 import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
+import com.example.aliarslan.orderservice.infra.adapters.jpa.entity.OrderMysqlEntity;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class OrderMysqlRepositoryAdaptor implements OrderRepository {
 
-    public Order save(OrderCreate orderRequest) {
-        //Order order = orderConverter.toOrderFromOrderRequest(orderRequest);
-        // orderMysqlRepository.save(order);
-        return null;
+    private final OrderMysqlRepository orderMysqlRepository;
+
+    public Order save(OrderCreate orderCreate) {
+        OrderMysqlEntity orderMysqlEntity = new OrderMysqlEntity();
+        orderMysqlEntity.setPrice(orderCreate.getPrice());
+        orderMysqlEntity.setStatus(orderCreate.getStatus());
+        orderMysqlRepository.save(orderMysqlEntity);
+        return toModel(orderMysqlEntity);
     }
 
     @Override
@@ -32,5 +41,13 @@ public class OrderMysqlRepositoryAdaptor implements OrderRepository {
     @Override
     public List<Order> getAll() {
         return null;
+    }
+
+    private Order toModel(OrderMysqlEntity orderMysqlEntity) {
+        return Order.builder()
+                .id(orderMysqlEntity.getId())
+                .price(orderMysqlEntity.getPrice())
+                .createdDate(orderMysqlEntity.getCreatedAt())
+                .build();
     }
 }
