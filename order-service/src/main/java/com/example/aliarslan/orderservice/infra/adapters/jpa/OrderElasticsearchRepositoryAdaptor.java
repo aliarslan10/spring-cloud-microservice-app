@@ -3,14 +3,25 @@ package com.example.aliarslan.orderservice.infra.adapters.jpa;
 import com.example.aliarslan.orderservice.domain.order.OrderRepository;
 import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
+import com.example.aliarslan.orderservice.infra.adapters.jpa.entity.OrderElasticsearchEntity;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class OrderElasticsearchRepositoryAdaptor implements OrderRepository {
+
+    private final OrderElasticsearchRepository orderElasticsearchRepository;
 
     @Override
     public Order save(OrderCreate orderCreate) {
-        return null;
+        OrderElasticsearchEntity orderElasticsearchEntity = new OrderElasticsearchEntity();
+        orderElasticsearchEntity.setPrice(orderCreate.getPrice());
+        orderElasticsearchEntity.setStatus(orderCreate.getStatus());
+        OrderElasticsearchEntity savedOrderEntity = orderElasticsearchRepository.save(orderElasticsearchEntity);
+        return toModel(savedOrderEntity);
     }
 
     @Override
@@ -31,5 +42,13 @@ public class OrderElasticsearchRepositoryAdaptor implements OrderRepository {
     @Override
     public List<Order> getAll() {
         return null;
+    }
+
+    private Order toModel(OrderElasticsearchEntity orderElasticsearchEntity) {
+        return Order.builder()
+                .id(orderElasticsearchEntity.getId())
+                .price(orderElasticsearchEntity.getPrice())
+                .createdDate(orderElasticsearchEntity.getCreatedAt())
+                .build();
     }
 }
