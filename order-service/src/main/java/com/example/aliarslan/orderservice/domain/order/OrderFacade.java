@@ -5,6 +5,7 @@ import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
 import com.example.aliarslan.orderservice.infra.adapters.jpa.OrderElasticsearchRepositoryAdaptor;
 import com.example.aliarslan.orderservice.infra.adapters.jpa.OrderMysqlRepositoryAdaptor;
 import com.example.aliarslan.orderservice.infra.adapters.rest.dto.OrderResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,15 +14,17 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class OrderFacade {
 
-    private OrderRepository orderRepository;
+    private final OrderElasticsearchRepositoryAdaptor orderElasticsearchRepositoryAdaptor;
+    private final OrderMysqlRepositoryAdaptor orderMysqlRepositoryAdaptor;
 
     @Transactional
     public Order save(OrderCreate orderCreate) {
         Order order = saveToMysql(orderCreate);
         saveToElasticsearch(orderCreate);
-        return null;
+        return order;
     }
 
     public OrderResponse get(String id) {
@@ -39,12 +42,10 @@ public class OrderFacade {
     }
 
     private Order saveToMysql(OrderCreate orderCreate) {
-        orderRepository = new OrderMysqlRepositoryAdaptor();
-        return orderRepository.save(orderCreate);
+        return orderMysqlRepositoryAdaptor.save(orderCreate);
     }
 
     private void saveToElasticsearch(OrderCreate orderCreate) {
-        orderRepository = new OrderElasticsearchRepositoryAdaptor();
-        orderRepository.save(orderCreate);
+        orderElasticsearchRepositoryAdaptor.save(orderCreate);
     }
 }
