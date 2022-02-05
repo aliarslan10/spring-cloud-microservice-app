@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderFacade {
 
-    private final OrderElasticsearchRepositoryAdaptor orderElasticsearchRepositoryAdaptor;
-    private final OrderMysqlRepositoryAdaptor orderMysqlRepositoryAdaptor;
+    private final OrderRepository orderRepository;
+    private final OrderSearchRepository orderSearchRepository;
 
     @Transactional
     public Order save(OrderCreate orderCreate) {
@@ -42,10 +42,10 @@ public class OrderFacade {
     }
 
     private Order saveToMysql(OrderCreate orderCreate) {
-        return orderMysqlRepositoryAdaptor.save(orderCreate);
+        return orderRepository.save(orderCreate);
     }
 
     private void saveToElasticsearch(OrderCreate orderCreate) {
-        orderElasticsearchRepositoryAdaptor.save(orderCreate);
+        orderSearchRepository.save(orderCreate);
     }
 }

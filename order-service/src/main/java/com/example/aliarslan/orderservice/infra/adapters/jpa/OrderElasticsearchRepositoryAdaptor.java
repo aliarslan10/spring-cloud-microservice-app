@@ -1,17 +1,15 @@
 package com.example.aliarslan.orderservice.infra.adapters.jpa;
 
-import com.example.aliarslan.orderservice.domain.order.OrderRepository;
+import com.example.aliarslan.orderservice.domain.order.OrderSearchRepository;
 import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
 import com.example.aliarslan.orderservice.infra.adapters.jpa.entity.OrderElasticsearchEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-public class OrderElasticsearchRepositoryAdaptor implements OrderRepository {
+public class OrderElasticsearchRepositoryAdaptor implements OrderSearchRepository {
 
     private final OrderElasticsearchRepository orderElasticsearchRepository;
 
@@ -25,22 +23,7 @@ public class OrderElasticsearchRepositoryAdaptor implements OrderRepository {
     }
 
     @Override
-    public Order get(String id) {
-        return null;
-    }
-
-    @Override
-    public Order update(OrderCreate orderCreate, String orderId) {
-        return null;
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public List<Order> getAll() {
+    public Order search(String value) {
         return null;
     }
 
