@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @Builder
 public class OrderCreate {
 
-    OrderStatus status;
-
-    BigDecimal price;
+    private OrderStatus status;
+    private BigDecimal price;
 }
