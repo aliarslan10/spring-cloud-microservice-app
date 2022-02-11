@@ -4,7 +4,6 @@ import com.example.aliarslan.orderservice.domain.order.model.OrderStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,8 +26,7 @@ public class OrderMysqlEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    BigDecimal price;
+    private BigDecimal price;
 
-    @Column(name = "created_at")
     private LocalDateTime createdAt;
 }
