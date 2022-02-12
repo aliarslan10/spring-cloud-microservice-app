@@ -2,6 +2,7 @@ package com.example.aliarslan.orderservice.infra.adapters.jpa.entity;
 
 import com.example.aliarslan.orderservice.domain.order.model.OrderStatus;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -28,6 +29,7 @@ public class OrderElasticsearchEntity implements Serializable {
 
     BigDecimal price;
 
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 }
