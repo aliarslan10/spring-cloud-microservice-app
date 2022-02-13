@@ -24,6 +24,7 @@ public class OrderResponse {
     public static OrderResponse fromModel(Order order) {
         return OrderResponse.builder()
                 .orderId(order.getId())
+                .status(order.getStatus())
                 .price(order.getPrice())
                 .createdDate(order.getCreatedDate())
                 .build();
