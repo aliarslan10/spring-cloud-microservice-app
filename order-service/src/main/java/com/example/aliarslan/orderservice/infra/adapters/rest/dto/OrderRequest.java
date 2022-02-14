@@ -1,5 +1,6 @@
 package com.example.aliarslan.orderservice.infra.adapters.rest.dto;
 
+import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
 import com.example.aliarslan.orderservice.domain.order.model.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +21,11 @@ public class OrderRequest {
 
     @NotNull
     private BigDecimal price;
+
+    public OrderCreate toModel() {
+        return OrderCreate.builder()
+                .status(OrderStatus.of(status))
+                .price(price)
+                .build();
+    }
 }
