@@ -7,6 +7,7 @@ import com.example.aliarslan.orderservice.infra.adapters.jpa.entity.OrderMysqlEn
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class OrderMysqlRepositoryAdaptor implements OrderRepository {
         OrderMysqlEntity orderMysqlEntity = new OrderMysqlEntity();
         orderMysqlEntity.setPrice(orderCreate.getPrice());
         orderMysqlEntity.setStatus(orderCreate.getStatus());
+        orderMysqlEntity.setCreatedAt(LocalDateTime.now());
         orderMysqlRepository.save(orderMysqlEntity);
         return toModel(orderMysqlEntity);
     }
