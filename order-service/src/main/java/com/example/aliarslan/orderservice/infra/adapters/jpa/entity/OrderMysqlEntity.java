@@ -28,5 +28,7 @@ public class OrderMysqlEntity {
 
     private BigDecimal price;
 
+    private String userId;
+
     private LocalDateTime createdAt;
 }

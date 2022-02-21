@@ -27,7 +27,9 @@ public class OrderElasticsearchEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    BigDecimal price;
+    private BigDecimal price;
+
+    private String userId;
 
     @CreationTimestamp
     @Column(name = "created_at")
