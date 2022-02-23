@@ -3,6 +3,7 @@ package com.example.aliarslan.orderservice.infra.adapters.rest;
 import com.example.aliarslan.orderservice.domain.order.OrderFacade;
 import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
+import com.example.aliarslan.orderservice.infra.adapters.rest.dto.OrderRequest;
 import com.example.aliarslan.orderservice.infra.adapters.rest.dto.OrderResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,9 @@ public class OrderController {
     private final OrderFacade orderFacade;
 
     @PostMapping
-    public ResponseEntity<OrderResponse> save(@Valid OrderCreate orderRequest) {
-        Order order = orderFacade.save(orderRequest);
+    public ResponseEntity<OrderResponse> save(@RequestBody @Valid OrderRequest orderRequest) {
+        OrderCreate orderCreate = orderRequest.toModel();
+        Order order = orderFacade.save(orderCreate);
         return ResponseEntity.ok(OrderResponse.fromModel(order));
     }
 
@@ -37,8 +39,9 @@ public class OrderController {
     }
 
     @PutMapping("/id")
-    public ResponseEntity<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderCreate orderRequest) {
-        return ResponseEntity.ok(orderFacade.update(orderRequest, orderId));
+    public ResponseEntity<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderRequest orderRequest) {
+        OrderCreate orderCreate = orderRequest.toModel();
+        return ResponseEntity.ok(orderFacade.update(orderCreate, orderId));
     }
 
     @DeleteMapping
