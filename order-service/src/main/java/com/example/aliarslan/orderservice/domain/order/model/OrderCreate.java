@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Builder
 public class OrderCreate {
 
+    private String userId;
     private OrderStatus status;
     private BigDecimal price;
 }
