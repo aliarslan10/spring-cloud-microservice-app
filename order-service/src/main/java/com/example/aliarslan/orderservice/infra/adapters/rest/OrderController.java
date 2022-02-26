@@ -33,18 +33,25 @@ public class OrderController {
         return ResponseEntity.ok(OrderResponse.fromModel(order));
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<OrderResponse> get(@PathVariable("id") String orderId) {
-        return ResponseEntity.ok(orderFacade.get(orderId));
+        Order order = orderFacade.get(orderId);
+        return ResponseEntity.ok(order.toResponse());
     }
 
-    @PutMapping("/id")
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<OrderResponse> search(@PathVariable("id") String keyword) {
+        Order order = orderFacade.search(keyword);
+        return ResponseEntity.ok(order.toResponse());
+    }
+
+    @PutMapping("/{id}")
     public ResponseEntity<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderRequest orderRequest) {
         OrderCreate orderCreate = orderRequest.toModel();
         return ResponseEntity.ok(orderFacade.update(orderCreate, orderId));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") String orderId) {
         orderFacade.delete(orderId);
         ResponseEntity.ok();
