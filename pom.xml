@@ -41,6 +41,7 @@
         <module>account-service</module>
         <module>discovery-server</module>
         <module>order-service</module>
+        <module>client-service</module>
     </modules>
 
     <dependencyManagement>
