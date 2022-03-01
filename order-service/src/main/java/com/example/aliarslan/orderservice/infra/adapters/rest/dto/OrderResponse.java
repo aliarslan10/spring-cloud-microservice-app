@@ -19,6 +19,7 @@ public class OrderResponse {
     private String orderId;
     private OrderStatus status;
     private BigDecimal price;
+    private String userId;
     private LocalDateTime createdDate;
 
     public static OrderResponse fromModel(Order order) {
