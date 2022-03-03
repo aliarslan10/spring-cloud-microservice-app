@@ -5,6 +5,9 @@ import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
 import com.example.aliarslan.orderservice.infra.adapters.rest.dto.OrderRequest;
 import com.example.aliarslan.orderservice.infra.adapters.rest.dto.OrderResponse;
+import com.example.aliarslan.orderservice.infra.common.rest.BaseController;
+import com.example.aliarslan.orderservice.infra.common.rest.DataResponse;
+import com.example.aliarslan.orderservice.infra.common.rest.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,38 +20,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("orders")
-public class OrderController {
+public class OrderController extends BaseController {
 
     private final OrderFacade orderFacade;
 
     @PostMapping
-    public ResponseEntity<OrderResponse> save(@RequestBody @Valid OrderRequest orderRequest) {
+    public Response<OrderResponse> save(@RequestBody @Valid OrderRequest orderRequest) {
         OrderCreate orderCreate = orderRequest.toModel();
         Order order = orderFacade.save(orderCreate);
-        return ResponseEntity.ok(OrderResponse.fromModel(order));
+        return respond(OrderResponse.fromModel(order));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderResponse> get(@PathVariable("id") String orderId) {
+    public Response<OrderResponse> get(@PathVariable("id") String orderId) {
         Order order = orderFacade.get(orderId);
-        return ResponseEntity.ok(order.toResponse());
+        return respond(order.toResponse());
     }
 
     @GetMapping("/search/{keyword}")
-    public ResponseEntity<OrderResponse> search(@PathVariable("id") String keyword) {
+    public Response<OrderResponse>  search(@PathVariable("id") String keyword) {
         Order order = orderFacade.search(keyword);
-        return ResponseEntity.ok(order.toResponse());
+        return respond(order.toResponse());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderRequest orderRequest) {
+    public Response<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderRequest orderRequest) {
         OrderCreate orderCreate = orderRequest.toModel();
-        return ResponseEntity.ok(orderFacade.update(orderCreate, orderId));
+        return respond(orderFacade.update(orderCreate, orderId));
     }
 
     @DeleteMapping("/{id}")
@@ -58,7 +60,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<OrderResponse>> getAll() {
-        return ResponseEntity.ok(orderFacade.getAll());
+    public Response<DataResponse<OrderResponse>> getAll() {
+        return respond(orderFacade.getAll());
     }
 }
