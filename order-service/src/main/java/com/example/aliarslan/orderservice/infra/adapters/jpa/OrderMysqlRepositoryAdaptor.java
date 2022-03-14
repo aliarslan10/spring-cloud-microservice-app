@@ -50,6 +50,7 @@ public class OrderMysqlRepositoryAdaptor implements OrderRepository {
                 .id(orderMysqlEntity.getId())
                 .price(orderMysqlEntity.getPrice())
                 .status(orderMysqlEntity.getStatus())
+                .userId(orderMysqlEntity.getUserId())
                 .createdDate(orderMysqlEntity.getCreatedAt())
                 .build();
     }
