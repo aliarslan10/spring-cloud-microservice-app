@@ -35,9 +35,9 @@ public class OrderController extends BaseController {
         return respond(OrderResponse.fromModel(order));
     }
 
-    @GetMapping("/{id}")
-    public Response<OrderResponse> get(@PathVariable("id") String orderId) {
-        Order order = orderFacade.get(orderId);
+    @GetMapping("/{orderId}/users/{userId}")
+    public Response<OrderResponse> get(@PathVariable("orderId") String orderId, @PathVariable("userId") String userId) {
+        Order order = orderFacade.get(orderId, userId);
         return respond(order.toResponse());
     }
 
