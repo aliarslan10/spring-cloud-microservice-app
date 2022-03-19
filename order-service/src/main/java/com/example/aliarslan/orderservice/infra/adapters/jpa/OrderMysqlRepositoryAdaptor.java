@@ -1,5 +1,6 @@
 package com.example.aliarslan.orderservice.infra.adapters.jpa;
 
+import com.example.aliarslan.orderservice.domain.exception.OrderNotFoundException;
 import com.example.aliarslan.orderservice.domain.order.OrderRepository;
 import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
@@ -27,7 +28,7 @@ public class OrderMysqlRepositoryAdaptor implements OrderRepository {
 
     @Override
     public Order get(String id) {
-        return null;
+        return toModel(orderMysqlRepository.findById(id).orElseThrow(() -> new OrderNotFoundException("orderService.order.notFound")));
     }
 
     @Override
