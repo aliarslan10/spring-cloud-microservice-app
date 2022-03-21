@@ -41,25 +41,25 @@ public class OrderController extends BaseController {
         return respond(order.toResponse());
     }
 
-    @GetMapping("/search/{keyword}")
-    public Response<OrderResponse>  search(@PathVariable("id") String keyword) {
-        Order order = orderFacade.search(keyword);
+    @GetMapping("/search/{keyword}/users/{userId}")
+    public Response<OrderResponse>  search(@PathVariable("id") String keyword, @PathVariable("userId") String userId) {
+        Order order = orderFacade.search(keyword, userId);
         return respond(order.toResponse());
     }
 
-    @PutMapping("/{id}")
-    public Response<OrderResponse> update(@PathVariable("id") String orderId, @Valid @RequestBody OrderRequest orderRequest) {
+    @PutMapping("/users/{userId}")
+    public Response<OrderResponse> update(@PathVariable("userId") String userId, @Valid @RequestBody OrderRequest orderRequest) {
         OrderCreate orderCreate = orderRequest.toModel();
-        return respond(orderFacade.update(orderCreate, orderId));
+        return respond(orderFacade.update(orderCreate, userId));
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") String orderId) {
-        orderFacade.delete(orderId);
+    @DeleteMapping("/{orderId}/users/{userId}")
+    public void delete(@PathVariable("orderId") String orderId, @PathVariable("userId") String userId) {
+        orderFacade.delete(orderId, userId);
         ResponseEntity.ok();
     }
 
-    @GetMapping
+    @GetMapping("/users/{userId}")
     public Response<DataResponse<OrderResponse>> getAll() {
         return respond(orderFacade.getAll());
     }

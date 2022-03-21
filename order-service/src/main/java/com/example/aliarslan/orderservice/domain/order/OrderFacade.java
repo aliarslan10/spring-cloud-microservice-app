@@ -35,15 +35,15 @@ public class OrderFacade {
         return orderRepository.get(orderId);
     }
 
-    public Order search(String keyword) {
+    public Order search(String keyword, String userId) {
         return orderSearchRepository.search(keyword);
     }
 
-    public OrderResponse update(OrderCreate orderCreate, String orderId) {
+    public OrderResponse update(OrderCreate orderCreate, String userId) {
         return null;
     }
 
-    public void delete(String id) {}
+    public void delete(String id, String userId) {}
 
     public List<OrderResponse> getAll() {
         return null;
