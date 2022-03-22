@@ -42,6 +42,7 @@
         <module>discovery-server</module>
         <module>order-service</module>
         <module>client-service</module>
+        <module>notification-service</module>
     </modules>
 
     <dependencyManagement>
