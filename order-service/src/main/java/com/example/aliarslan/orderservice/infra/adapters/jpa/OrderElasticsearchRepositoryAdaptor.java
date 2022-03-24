@@ -1,5 +1,6 @@
 package com.example.aliarslan.orderservice.infra.adapters.jpa;
 
+import com.example.aliarslan.orderservice.domain.exception.OrderBusinessException;
 import com.example.aliarslan.orderservice.domain.order.OrderSearchRepository;
 import com.example.aliarslan.orderservice.domain.order.model.Order;
 import com.example.aliarslan.orderservice.domain.order.model.OrderCreate;
@@ -24,7 +25,7 @@ public class OrderElasticsearchRepositoryAdaptor implements OrderSearchRepositor
 
     @Override
     public Order search(String value) {
-        return null;
+        return toModel(orderElasticsearchRepository.findById(value).orElseThrow(() -> new OrderBusinessException("orderService.user.notFound")));
     }
 
     private Order toModel(OrderElasticsearchEntity orderElasticsearchEntity) {
