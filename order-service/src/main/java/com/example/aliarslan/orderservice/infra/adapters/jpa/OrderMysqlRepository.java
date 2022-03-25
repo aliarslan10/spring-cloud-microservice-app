@@ -4,6 +4,10 @@ import com.example.aliarslan.orderservice.infra.adapters.jpa.entity.OrderMysqlEn
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface OrderMysqlRepository extends JpaRepository<OrderMysqlEntity, String> {
+
+    List<OrderMysqlEntity> findAllByUserId(String userId);
 }

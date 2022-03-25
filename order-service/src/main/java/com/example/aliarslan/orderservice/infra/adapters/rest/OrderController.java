@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -60,7 +61,7 @@ public class OrderController extends BaseController {
     }
 
     @GetMapping("/users/{userId}")
-    public Response<DataResponse<OrderResponse>> getAll() {
-        return respond(orderFacade.getAll());
+    public Response<DataResponse<OrderResponse>> getAll(@PathVariable("userId") String userId) {
+        return respond(orderFacade.getAll(userId).stream().map(OrderResponse::fromModel).collect(Collectors.toList()));
     }
 }

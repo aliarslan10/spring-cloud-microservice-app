@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,8 +43,8 @@ public class OrderMysqlRepositoryAdaptor implements OrderRepository {
     }
 
     @Override
-    public List<Order> getAll() {
-        return null;
+    public List<Order> getAll(String userId) {
+        return orderMysqlRepository.findAllByUserId(userId).stream().map(this::toModel).collect(Collectors.toList());
     }
 
     private Order toModel(OrderMysqlEntity orderMysqlEntity) {

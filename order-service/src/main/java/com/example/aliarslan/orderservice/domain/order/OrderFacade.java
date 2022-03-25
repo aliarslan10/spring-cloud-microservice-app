@@ -45,8 +45,9 @@ public class OrderFacade {
 
     public void delete(String id, String userId) {}
 
-    public List<OrderResponse> getAll() {
-        return null;
+    public List<Order> getAll(String userId) {
+        checkIfUserExist(userId);
+        return orderRepository.getAll(userId);
     }
 
     private Order saveToMysql(OrderCreate orderCreate) {

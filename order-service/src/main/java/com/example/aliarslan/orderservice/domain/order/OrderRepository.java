@@ -15,5 +15,5 @@ public interface OrderRepository {
 
     void delete(String id);
 
-    List<Order> getAll();
+    List<Order> getAll(String userId);
 }
