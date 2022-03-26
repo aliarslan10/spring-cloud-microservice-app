@@ -43,7 +43,7 @@ public class OrderController extends BaseController {
     }
 
     @GetMapping("/search/{keyword}/users/{userId}")
-    public Response<OrderResponse>  search(@PathVariable("id") String keyword, @PathVariable("userId") String userId) {
+    public Response<OrderResponse> search(@PathVariable("keyword") String keyword, @PathVariable("userId") String userId) {
         Order order = orderFacade.search(keyword, userId);
         return respond(order.toResponse());
     }
