@@ -1,0 +1,17 @@
+server:
+  port: 8092
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  rabbitmq:
+    username: username
+    password: password
+  cloud:
+    stream:
+      binding:
+        input: # kuyruğu dinleyen (consume) servis yani notification service - output (produce) diğer servis configlerinde yer alıyor
+          destination: notification-queue #kuyruk/topic ismi
