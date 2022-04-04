@@ -1,6 +1,6 @@
 package com.example.aliarslan.notificationservice;
 
-import com.example.aliarslan.notificationservice.model.OrderNotificationMessage;
+import com.example.aliarslan.notificationservice.model.OrderEvent;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
@@ -9,7 +9,7 @@ import org.springframework.cloud.stream.messaging.Sink;
 public class NotificationListener {
 
     @StreamListener
-    public void notificationListener(OrderNotificationMessage orderNotificationMessage) {
-        System.out.println("Notification received." + orderNotificationMessage.getOrderId());
+    public void orderListener(OrderEvent orderEvent) {
+        System.out.println("Notification received : " + orderEvent);
     }
 }
