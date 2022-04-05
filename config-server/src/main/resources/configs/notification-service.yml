@@ -8,10 +8,10 @@ eureka:
 
 spring:
   rabbitmq:
-    username: username
+    username: user
     password: password
   cloud:
     stream:
-      binding:
+      bindings:
         input: # kuyruğu dinleyen (consume) servis yani notification service - output (produce) diğer servis configlerinde yer alıyor
           destination: notification-queue #kuyruk/topic ismi

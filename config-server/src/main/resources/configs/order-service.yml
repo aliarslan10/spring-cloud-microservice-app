@@ -11,10 +11,10 @@ spring:
     hibernate:
       ddl-auto: update
   rabbitmq:
-    username: username
+    username: user
     password: password
   cloud:
     stream:
-      binding:
+      bindings:
         output:
           destination: notification-queue #mesajı yazacağımız kuyruk/topic ismi
