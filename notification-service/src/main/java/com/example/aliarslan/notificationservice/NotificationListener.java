@@ -8,7 +8,7 @@ import org.springframework.cloud.stream.messaging.Sink;
 @EnableBinding(Sink.class)
 public class NotificationListener {
 
-    @StreamListener
+    @StreamListener(Sink.INPUT)
     public void orderListener(OrderEvent orderEvent) {
         System.out.println("Notification received : " + orderEvent);
     }
