@@ -21,12 +21,14 @@ public class OrderFacade {
     private final OrderRepository orderRepository;
     private final OrderSearchRepository orderSearchRepository;
     private final AccountClientService accountClientService;
+    private final OrderEvent orderEvent;
 
     @Transactional
     public Order save(OrderCreate orderCreate) {
         checkIfUserExist(orderCreate.getUserId());
         Order order = saveToMysql(orderCreate);
         saveToElasticsearch(orderCreate);
+        sendToQueue(order);
         return order;
     }
 
@@ -50,6 +52,11 @@ public class OrderFacade {
         return orderRepository.getAll(userId);
     }
 
+    private void checkIfUserExist(String userId) {
+        Optional.ofNullable(accountClientService.getAccount(userId).getBody())
+                .orElseThrow(() -> new OrderBusinessException("orderService.user.notFound"));
+    }
+
     private Order saveToMysql(OrderCreate orderCreate) {
         return orderRepository.save(orderCreate);
     }
@@ -58,8 +65,7 @@ public class OrderFacade {
         orderSearchRepository.save(orderCreate);
     }
 
-    private void checkIfUserExist(String userId) {
-        Optional.ofNullable(accountClientService.getAccount(userId).getBody())
-                .orElseThrow(() -> new OrderBusinessException("orderService.user.notFound"));
+    private void sendToQueue(Order order) {
+        orderEvent.sendToQueue(order);
     }
 }
