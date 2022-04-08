@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 public class OrderEvent {
     private String id;
-    private Integer status;
+    private String status;
     private BigDecimal price;
     private String userId;
     private LocalDateTime createdDate;
