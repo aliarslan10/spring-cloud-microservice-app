@@ -27,6 +27,7 @@ public class OrderResponse {
                 .orderId(order.getId())
                 .status(order.getStatus())
                 .price(order.getPrice())
+                .userId(order.getUserId())
                 .createdDate(order.getCreatedDate())
                 .build();
     }

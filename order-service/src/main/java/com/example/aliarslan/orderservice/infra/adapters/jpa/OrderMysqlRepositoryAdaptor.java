@@ -23,6 +23,7 @@ public class OrderMysqlRepositoryAdaptor implements OrderRepository {
         orderMysqlEntity.setPrice(orderCreate.getPrice());
         orderMysqlEntity.setStatus(orderCreate.getStatus());
         orderMysqlEntity.setCreatedAt(LocalDateTime.now());
+        orderMysqlEntity.setUserId(orderCreate.getUserId());
         orderMysqlRepository.save(orderMysqlEntity);
         return toModel(orderMysqlEntity);
     }

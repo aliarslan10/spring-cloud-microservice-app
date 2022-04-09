@@ -19,6 +19,7 @@ public class OrderElasticsearchRepositoryAdaptor implements OrderSearchRepositor
         OrderElasticsearchEntity orderElasticsearchEntity = new OrderElasticsearchEntity();
         orderElasticsearchEntity.setPrice(orderCreate.getPrice());
         orderElasticsearchEntity.setStatus(orderCreate.getStatus());
+        orderElasticsearchEntity.setUserId(orderCreate.getUserId());
         orderElasticsearchRepository.save(orderElasticsearchEntity);
         return toModel(orderElasticsearchEntity);
     }
