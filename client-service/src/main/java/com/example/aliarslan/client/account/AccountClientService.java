@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "account-service-client", url = "localhost:8090")
+@FeignClient(name = "ACCOUNT-SERVICE") // application name in the discovery-server
 public interface AccountClientService {
 
     @GetMapping("/accounts/{id}")

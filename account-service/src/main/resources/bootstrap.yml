@@ -1,7 +1,8 @@
 spring:
   cloud:
     config:
+      name: account-service     # file name for config-server
       profile: native
       uri: http://localhost:8888
   application:
-    name: account-service
+    name: account-service       # this name appears in discovery-server
