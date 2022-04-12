@@ -4,6 +4,7 @@ services:
     image: cassandra
     ports:
       - "9042:9042"
+
   mysql:
     image: mysql
     platform: linux/amd64
@@ -11,6 +12,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "password"
+
   elasticsearch:
     image: elasticsearch:7.16.3
     ports:
@@ -18,6 +20,7 @@ services:
       - "9300:9300"
     environment:
       discovery.type: single-node
+
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -26,3 +29,8 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
+
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
