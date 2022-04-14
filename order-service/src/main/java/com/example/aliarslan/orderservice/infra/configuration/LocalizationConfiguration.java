@@ -26,7 +26,7 @@ public class LocalizationConfiguration extends AcceptHeaderLocaleContextResolver
     @Bean
     public ResourceBundleMessageSource messageSource() {
         var source = new ResourceBundleMessageSource();
-        source.setBasenames("i18n/ticket");
+        source.setBasenames("i18n/order");
         source.setDefaultEncoding("UTF-8");
         return source;
     }
