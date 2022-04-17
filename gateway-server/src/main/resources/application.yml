@@ -1,0 +1,46 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: api-gateway
+  zipkin:
+    base-url: http://localhost:9411/
+  cloud:
+    gateway:
+      routes:
+        - id: account-service
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+            - Path=/accounts/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: account-service
+                fallbackUri: forward:/fallback/accounts
+
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/orders/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
+            - name: Hystrix
+              args:
+                name: order-service
+                fallbackUri: forward:/fallback/orders
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: false
+  instance:
+    preferIpAddress: true

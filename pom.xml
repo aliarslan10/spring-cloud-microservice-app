@@ -43,6 +43,7 @@
         <module>order-service</module>
         <module>client-service</module>
         <module>notification-service</module>
+        <module>gateway-server</module>
     </modules>
 
     <dependencyManagement>
