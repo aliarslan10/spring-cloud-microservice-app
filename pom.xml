@@ -44,6 +44,7 @@
         <module>client-service</module>
         <module>notification-service</module>
         <module>gateway-server</module>
+        <module>admin-server</module>
     </modules>
 
     <dependencyManagement>
