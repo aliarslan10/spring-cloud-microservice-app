@@ -1,5 +1,15 @@
 server:
   port: 8091
+  boot:
+    admin:
+      client:
+        url: http://localhost:9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 eureka:
   client:
