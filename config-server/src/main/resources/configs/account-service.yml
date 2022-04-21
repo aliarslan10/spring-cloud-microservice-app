@@ -3,7 +3,7 @@ server:
   boot:
     admin:
       client:
-        url: http://localhost:9000
+        url: ${SPRING_BOOT_ADMIN_SERVER_URL:http://localhost:9000}
 
 management:
   endpoints:
@@ -14,19 +14,19 @@ management:
 spring:
   data:
     cassandra:
-      keyspace-name: springcloud
-      schema-action: CREATE_IF_NOT_EXISTS
-      port: 9042
-      username: cassandra
-      password: cassandra
+      keyspace-name: ${CASSANDRA_SERVER_KEYSPACE:springcloud}
+      schema-action: ${CASSANDRA_SCHEMA_ACTION:CREATE_IF_NOT_EXISTS}
+      port: ${CASSANDRA_SERVER_PORT:9042}
+      username: ${CASSANDRA_SERVER_USERNAME:cassandra}
+      password: ${CASSANDRA_SERVER_USERNAME:cassandra}
       local:
-        datacenter: datacenter1
+        datacenter: ${CASSANDRA_DATACENTER:datacenter1}
       contact:
-        point: localhost
+        point: ${CASSANDRA_SERVER_HOST:localhost}
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
