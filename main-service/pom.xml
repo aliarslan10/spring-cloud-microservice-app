@@ -59,5 +59,10 @@
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>2.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.39.1</version>
+        </dependency>
     </dependencies>
 </project>
