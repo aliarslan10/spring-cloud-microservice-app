@@ -3,6 +3,6 @@ spring:
     config:
       name: account-service     # file name for config-server
       profile: native
-      uri: http://localhost:8888
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
   application:
     name: account-service       # this name appears in discovery-server
