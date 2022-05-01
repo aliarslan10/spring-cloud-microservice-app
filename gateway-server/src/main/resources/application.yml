@@ -1,11 +1,11 @@
 server:
-  port: 8088
+  port: ${SERVER_PORT:8088}
 
 spring:
   application:
     name: api-gateway
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
   cloud:
     gateway:
       routes:
@@ -40,7 +40,7 @@ management:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
     register-with-eureka: false
   instance:
     preferIpAddress: true
