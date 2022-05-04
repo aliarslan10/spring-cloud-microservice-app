@@ -33,6 +33,7 @@ public class AccountConverterImpl implements AccountConverter {
         AccountResponse accountResponse = new AccountResponse();
         accountResponse.setUserId(account.getId());
         accountResponse.setUsername(account.getUsername());
+        accountResponse.setMailAddress(account.getMailAddress());
         accountResponse.setCreatedAt(account.getCreatedAt());
         accountResponse.setIsActive(account.getIsActive());
         return accountResponse;

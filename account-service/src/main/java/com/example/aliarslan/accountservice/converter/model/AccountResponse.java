@@ -11,6 +11,7 @@ public class AccountResponse {
 
     private String userId;
     private String username;
+    private String mailAddress;
     private LocalDate createdAt;
     private Boolean isActive;
 }
