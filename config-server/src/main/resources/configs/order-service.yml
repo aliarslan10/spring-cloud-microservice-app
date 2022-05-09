@@ -3,7 +3,7 @@ server:
   boot:
     admin:
       client:
-        url: http://localhost:9000
+        url: ${SPRING_BOOT_ADMIN_SERVER_URL:http://localhost:9000}
 
 management:
   endpoints:
@@ -14,24 +14,24 @@ management:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
 
 spring:
   datasource:
     driver: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/orderservice?createDatabaseIfNotExist=true
-    username: root
-    password: password
+    url: ${MYSQL_URL:jdbc:mysql://localhost:3306/orderservice?createDatabaseIfNotExist=true}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:password}
   jpa:
     hibernate:
       ddl-auto: update
   rabbitmq:
-    username: user
-    password: password
+    username: ${RABBITMQ_USERNAME:user}
+    password: ${RABBITMQ_PASSWORD:password}
   cloud:
     stream:
       bindings:
         output:
           destination: notification-queue #mesajı yazacağımız kuyruk/topic ismi
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
