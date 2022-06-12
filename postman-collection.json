@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "e0d7eb44-d504-43d5-b8c4-06e30ad9bd90",
+		"name": "Spring Cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7529916"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"aliarslan\",\n    \"mailAddress\": \"ali@blogkafem.net\",\n    \"password\": \"XXxxxXX\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"username\": \"aliarslan\",\n        \"mailAddress\": \"test-update@mail\",\n        \"password\": \"123456XX\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/accounts/95e262f3-78b8-4be6-a279-7384c3f4b30e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"accounts",
+								"95e262f3-78b8-4be6-a279-7384c3f4b30e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/accounts/86800a89-b7a0-4ab5-b677-21fb56ca8729",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"accounts",
+								"86800a89-b7a0-4ab5-b677-21fb56ca8729"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/accounts/a761e265-043c-4030-8657-87252dcc0385",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"accounts",
+								"a761e265-043c-4030-8657-87252dcc0385"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n    \"status\": 1,\n    \"price\": 385\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Save",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n    \"status\": 1,\n    \"price\": 375\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8091",
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Apr 2022 05:15:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"orderId\": \"89b720ee-24e1-48b0-bbf5-bd922105eb61\",\n        \"status\": \"NEW_ORDER\",\n        \"price\": 375,\n        \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n        \"createdDate\": \"2022-04-11T08:15:05.474006\"\n    },\n    \"errors\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/orders/users/86800a89-b7a0-4ab5-b677-21fb56ca8729",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"orders",
+								"users",
+								"86800a89-b7a0-4ab5-b677-21fb56ca8729"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/orders/users/86800a89-b7a0-4ab5-b677-21fb56ca8729",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"orders",
+										"users",
+										"86800a89-b7a0-4ab5-b677-21fb56ca8729"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 May 2022 08:36:42 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"items\": [\n            {\n                \"orderId\": \"00298bc9-f147-4218-8762-7a6a1f7c70ef\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-16T09:27:13.754609\"\n            },\n            {\n                \"orderId\": \"0e3c959a-d037-4861-b6f9-9a1fb40c35b3\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-16T08:55:15.9096\"\n            },\n            {\n                \"orderId\": \"281ba98f-33ce-4f6b-8e05-34844b78ae22\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-17T12:18:18.648283\"\n            },\n            {\n                \"orderId\": \"39ae7350-d076-4978-afe6-81e97401a510\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-16T09:32:07.041527\"\n            },\n            {\n                \"orderId\": \"3e1b058d-2d36-4211-b297-fc56a2535211\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-17T12:16:08.529569\"\n            },\n            {\n                \"orderId\": \"412c67d5-0afb-4b25-9184-e3ef745db8e3\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:11:13.074728\"\n            },\n            {\n                \"orderId\": \"49228e44-5702-41ca-b647-7b67d5cdc3cb\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:11:55.955303\"\n            },\n            {\n                \"orderId\": \"4c55d70f-3c17-47ef-84e1-6bfca098ece7\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:00:21.319038\"\n            },\n            {\n                \"orderId\": \"65972b00-d37e-4726-a2d4-6e4c8021ff84\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 365,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T10:14:41.835806\"\n            },\n            {\n                \"orderId\": \"6ae3d03d-8c66-469b-b509-227dded62879\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 365,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T10:17:35.031454\"\n            },\n            {\n                \"orderId\": \"6e9d77a9-f2e2-43ec-bc2e-7b46f36c7bd9\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:12:51.709953\"\n            },\n            {\n                \"orderId\": \"728fe6a3-0c6b-46b4-8dac-56e45ed785c0\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 350,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T07:53:19.102886\"\n            },\n            {\n                \"orderId\": \"73f0e1c2-38c4-4856-a887-48f6eb937690\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 365,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T09:51:19.030863\"\n            },\n            {\n                \"orderId\": \"79fdd434-f04f-4fe0-b871-b490508637dd\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-17T13:07:47.40059\"\n            },\n            {\n                \"orderId\": \"89b720ee-24e1-48b0-bbf5-bd922105eb61\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 375,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-11T08:15:05.474006\"\n            },\n            {\n                \"orderId\": \"938cb9d4-887c-4b25-80bf-e3db9089134d\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-16T09:38:38.361648\"\n            },\n            {\n                \"orderId\": \"98a2b0cf-5c02-4856-8c22-e4cd286be2b4\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 375,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-11T08:07:41.733472\"\n            },\n            {\n                \"orderId\": \"9f48103a-e1e6-4a41-b3e4-72e1ab21d6a5\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:21:32.924564\"\n            },\n            {\n                \"orderId\": \"a0132146-6e4d-49a1-a53e-d1d4831ad384\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 365,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T10:11:32.356302\"\n            },\n            {\n                \"orderId\": \"a73d0eb7-2e93-4d23-aad2-44a7d74d7cc8\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 365,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T10:23:10.399175\"\n            },\n            {\n                \"orderId\": \"a9c0df8a-9d68-432a-8451-ed33474eedc5\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 375,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-11T08:00:41.19376\"\n            },\n            {\n                \"orderId\": \"ab6ac3ed-a1a8-4942-b1cf-572552306524\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 360,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T07:54:40.927321\"\n            },\n            {\n                \"orderId\": \"b0472adf-2d4b-47e7-8a22-14f1dc838398\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 250,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-06T08:27:20.649136\"\n            },\n            {\n                \"orderId\": \"b4622c77-97f6-4275-bd76-95cbff888207\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:04:57.092413\"\n            },\n            {\n                \"orderId\": \"cd50f0bd-b9af-48d4-bc68-5817a9c1e0fb\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 365,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-09T09:49:37.302941\"\n            },\n            {\n                \"orderId\": \"d4899f23-42a0-4a00-8ab7-f888e56e7538\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 385,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-17T12:17:38.61909\"\n            },\n            {\n                \"orderId\": \"d5fc116a-55d6-4db7-bdf1-3a643847c4f3\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T07:59:40.159415\"\n            },\n            {\n                \"orderId\": \"e8e62c79-d093-490c-9710-dd0c91bbdd83\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T08:21:30.770831\"\n            },\n            {\n                \"orderId\": \"f0a4ab6b-0d8b-463c-a022-b81b16d60f1c\",\n                \"status\": \"NEW_ORDER\",\n                \"price\": 380,\n                \"userId\": \"86800a89-b7a0-4ab5-b677-21fb56ca8729\",\n                \"createdDate\": \"2022-04-15T07:25:45.488576\"\n            }\n        ],\n        \"page\": null,\n        \"size\": 29,\n        \"totalSize\": null\n    },\n    \"errors\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
